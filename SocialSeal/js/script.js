@@ -56,8 +56,9 @@ const prepareDOMEvents = () => {
 
     // Mobile Nav
     mobile_icon.addEventListener('click', openMenu);
+    const menu_links_array = Array.from(menu_links);
 
-    menu_links.forEach(link => {
+    menu_links_array.forEach(link => {
         link.addEventListener('click', () => {
             closeMenu();
         });
@@ -74,14 +75,14 @@ const showServicesDropdown = () => {
     if (services.classList.contains('hidden')) {
         arrowIconServices.style.transform = 'rotate(0deg)';
         servicesBtn.style.color = '#000000';
-        baner.classList.toggle('filter-content');
+        baner.classList.remove('filter-content');
     } else {
         arrowIconServices.style.transform = 'rotate(180deg)';
         servicesBtn.style.color = '#F89E52';
         plans.classList.add('hidden');
         plansBtn.style.color = '#000000';
         arrowIconPlans.style.transform = 'rotate(0deg)';
-        baner.classList.toggle('filter-content');
+        baner.classList.add('filter-content');
     }
 };
 
@@ -92,14 +93,14 @@ const showPlansDropdown = () => {
     if (plans.classList.contains('hidden')) {
         arrowIconPlans.style.transform = 'rotate(0deg)';
         plansBtn.style.color = '#000000';
-        baner.classList.toggle('filter-content');
+        baner.classList.remove('filter-content');
     } else {
         arrowIconPlans.style.transform = 'rotate(180deg)';
         plansBtn.style.color = '#F89E52';
         services.classList.add('hidden');
         servicesBtn.style.color = '#000000';
         arrowIconServices.style.transform = 'rotate(0deg)';
-        baner.classList.toggle('filter-content');
+        baner.classList.add('filter-content');
     }
 };
 
@@ -117,6 +118,7 @@ const closeDropdownsOnOutsideClick = (e) => {
 
         plans.classList.add('hidden');
         arrowIconPlans.style.transform = 'rotate(0deg)';
+        baner.classList.remove('filter-content');
     }
 };
 

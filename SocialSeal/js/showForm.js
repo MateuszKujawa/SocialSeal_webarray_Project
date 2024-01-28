@@ -25,12 +25,12 @@ let firstForm
     let submitBtn
 
 
-const main = () => {
-    prepareDOMElements();
-    prepareDOMEvents();
+const mainContent = () => {
+    prepareDOMElements2();
+    prepareDOMEvents2();
 }
 
-const prepareDOMElements = () => {
+const prepareDOMElements2 = () => {
     // Overlay
     overlay = document.querySelector(".overlay");
 
@@ -55,16 +55,19 @@ const prepareDOMElements = () => {
     submitBtn = popup2.querySelector("#submitBtn")
 }
 
-const prepareDOMEvents = () => {
+const prepareDOMEvents2 = () => {
     // Open first popup
     openPopupBtn1.addEventListener("click", openPopup1);
     openPopupBtn2.addEventListener("click", openPopup1);
 
     // Open popup 2
     popupBtn2.addEventListener("click", openPopup2);
+
+    // Close popup2
+    submitBtn.addEventListener('click', closePopup2);
 }
 
-const closePopupOnOutside = (event) => {
+const closePopupOnOutside2 = (event) => {
     if (
       !popup.contains(event.target) &&
       event.target !== openPopupBtn1 &&
@@ -87,14 +90,14 @@ const openPopup1 = () => {
   } else {
     popup.classList.remove("hidden");
     overlay.classList.remove("hidden");
-    document.addEventListener("click", closePopupOnOutside);
+    document.addEventListener("click", closePopupOnOutside2);
   }
 };
 
 const closePopup1 = () => {
   popup.classList.add("hidden");
   overlay.classList.add("hidden");
-  document.removeEventListener("click", closePopupOnOutside);
+  document.removeEventListener("click", closePopupOnOutside2);
 };
 
 
@@ -102,16 +105,16 @@ const openPopup2 = () => {
     popup2.classList.remove('hidden');
     popup.classList.add('hidden');
     overlay.classList.remove("hidden");
-    document.addEventListener("click", closePopupOnOutside);
+    document.addEventListener("click", closePopupOnOutside2);
 };
 
 const closePopup2 = () => {
     popup2.classList.add("hidden");
     overlay.classList.add("hidden");
-    document.removeEventListener("click", closePopupOnOutside);
+    document.removeEventListener("click", closePopupOnOutside2);
 };
 
 
 
 
-document.addEventListener('DOMContentLoaded', main);
+document.addEventListener('DOMContentLoaded', mainContent);

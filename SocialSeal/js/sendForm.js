@@ -72,9 +72,6 @@ const submitForm = () => {
   formData.append('platform', JSON.stringify(selectedCheckboxes));
   formData.append('comments', comments);
 
-
-  // Za cholere nie wiem jaki link mam użyć tego api..
-
   fetch('URL', {
     method: 'POST',
     body: formData,
